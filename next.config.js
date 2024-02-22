@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  basePath: process.env.GITHUB_ACTIONS ? "/minor-circle-hp" : "",
+  basePath: process.env.GITHUB_ACTIONS ? "/hp" : "",
   trailingSlash: true,
 };
 
