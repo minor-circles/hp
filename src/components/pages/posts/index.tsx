@@ -1,6 +1,5 @@
 import { NextSeo } from 'next-seo';
 import { MainLayout } from '@/components/features/app/Layout';
-import { Profile } from '@/components/features/app/Profile';
 import { Post } from '@/components/features/post/Post';
 import { Share } from '@/components/features/post/Share';
 import { Toc } from '@/components/features/post/Toc';
