@@ -53,7 +53,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     'unused-imports/no-unused-imports': 'off',
     'unused-imports/no-unused-vars': [
-      'warn',
+      'off',
       {
         vars: 'all',
         varsIgnorePattern: '^_',
@@ -62,7 +62,7 @@ module.exports = {
       },
     ],
     'import/order': [
-      'error',
+      'off',
       {
         groups: [
           'builtin',

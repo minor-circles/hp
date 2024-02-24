@@ -1,11 +1,11 @@
+import { NextSeo } from 'next-seo';
 import { RiChatNewLine,RiArchiveDrawerFill  } from 'react-icons/ri';
 import { Link } from '@/components/common/Link';
 import { MainLayout } from '@/components/features/app/Layout';
 import { Profile } from '@/components/features/app/Profile';
 import { Stories } from '@/components/features/story/Stories';
-import { PostType } from '@/types/post';
-import { NextSeo } from 'next-seo';
 import { ROOT_URL } from '@/config/app';
+import { PostType } from '@/types/post';
 
 type Props = {
   posts: PostType[];
