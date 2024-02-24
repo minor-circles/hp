@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/api';
 
 type Props = React.ComponentPropsWithoutRef<typeof List>;
 
-const View: React.VFC<Props> = (props: Props) => <List {...props} />;
+const View: React.VFC<Props> = (props: Props) => <List {...props} category='posts'/>;
 
 export default View;
 
@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
     'slug',
     'coverImage',
     'excerpt',
-  ]).slice(0, 4);
+  ],'posts').slice(0, 4);
 
   return {
     props: { posts },

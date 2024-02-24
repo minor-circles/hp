@@ -5,5 +5,6 @@ import { LinkType } from '@/types/link';
 export const links: LinkType[] = [
   // { name: 'tags', href: '/tags', icon: <FiTag /> },
   { name: 'about', href: '/about', icon: <AiOutlineInfoCircle /> },
-  { name: 'list', href: '/list', icon: <AiOutlineInfoCircle /> },
+  { name: 'circles', href: '/circles', icon: <AiOutlineInfoCircle /> },
+  { name: 'posts', href: '/posts', icon: <AiOutlineInfoCircle /> },
 ];

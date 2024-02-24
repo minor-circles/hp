@@ -6,7 +6,7 @@ date: '2024-02-23'
 ogImage:
   url: '/assets/blog/dynamic-routing/cover.jpg'
 tags:
-  - 'others'
+  - 'サークル'
 ---
 
 ## 大阪大学お嬢様部とは

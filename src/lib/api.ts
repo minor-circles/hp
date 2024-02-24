@@ -6,10 +6,16 @@ import { PostType } from '@/types/post';
 
 const postsDirectory = resolve(process.cwd(), '_posts');
 
-export const getPostSlugs = () => fs.readdirSync(postsDirectory);
+//fs.readdirSync(postsDirectory,recursive =true)をやりたかった
+//export const getPostSlugs = () => ['circles','posts'].reduce((acc,dir)=>acc.concat(fs.readdirSync(resolve(postsDirectory,dir)).map(x=>dir+'/'+x)),new Array<string>())
 
-export const getMaxPage = () => {
-  const postNum = getPostSlugs().length;
+const category_list = ['circles','posts']
+export const getPostSlugs = (category:String) => category=='ALL'?
+  category_list.reduce((acc,dir)=>acc.concat(fs.readdirSync(resolve(postsDirectory,dir)).map(x=>dir+'/'+x)),new Array<string>())
+  :fs.readdirSync(postsDirectory+'/'+category).map(x=>category+'/'+x)
+
+export const getMaxPage = (category:String) => {
+  const postNum = getPostSlugs(category).length;
   return Math.ceil(postNum / paginationOffset);
 };
 
@@ -44,8 +50,8 @@ export const getPostBySlug = (slug: string, fields: string[] = []) => {
 
 type Field = keyof PostType;
 
-export const getAllPosts = (fields: Field[] = []) => {
-  const slugs = getPostSlugs();
+export const getAllPosts = (fields: Field[] = [],category:String) => {
+  const slugs = getPostSlugs(category);
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
     .sort((post1, post2) => (post1.date! > post2.date! ? -1 : 1));

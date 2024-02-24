@@ -1,9 +1,9 @@
-import { Home } from '@/components/pages/home';
+import { List } from '@/components/pages/list';
 import { getAllPosts } from '@/lib/api';
 
-type Props = React.ComponentPropsWithoutRef<typeof Home>;
+type Props = React.ComponentPropsWithoutRef<typeof List>;
 
-const View: React.VFC<Props> = (props: Props) => <Home {...props} />;
+const View: React.VFC<Props> = (props: Props) => <List {...props} category='circles' />;
 
 export default View;
 
@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
     'slug',
     'coverImage',
     'excerpt',
-  ],'ALL').slice(0, 4);
+  ],'circles').slice(0, 4);
 
   return {
     props: { posts },

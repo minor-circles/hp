@@ -21,7 +21,7 @@ export const getStaticProps = async ({ params }: Params) => {
     'coverImage',
     'excerpt',
     'tags',
-  ]).filter((post) => post.tags?.includes(params.tag));
+  ],'').filter((post) => post.tags?.includes(params.tag));
 
   return {
     props: { posts },
@@ -29,7 +29,7 @@ export const getStaticProps = async ({ params }: Params) => {
 };
 
 export async function getStaticPaths() {
-  const tags = getAllPosts(['tags']).flatMap((post) => post.tags);
+  const tags = getAllPosts(['tags'],'ALL').flatMap((post) => post.tags);
 
   return {
     paths: tags.map((tag) => {
