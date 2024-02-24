@@ -18,16 +18,16 @@ export const Story = ({ title, coverImage,iconImage, date, excerpt, slug }: Prop
         {
           iconImage ?
           (
-            <div className="center w-full md:w-1/3 h-52 md:h-full bg-neutral-50 md:bg-transparent">
+            <div className="center w-full md:w-1/5 h-52 md:h-full bg-neutral-50 md:bg-transparent">
               <Image
                 src={iconImage}
                 alt={`Cover Image for ${title}`}
-                className="w-full h-full max-h-xs object-cover"
+                className="w-full h-full max-h-xs object-contain bg-white"
               />
             </div>
           ):
           (
-            <div className="center w-full md:w-1/3 h-52 md:h-full bg-neutral-50 md:bg-transparent">
+            <div className="center w-full md:w-1/5 h-52 md:h-full bg-neutral-50 md:bg-transparent">
               <Image
                 src={coverImage}
                 alt={`Cover Image for ${title}`}
