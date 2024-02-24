@@ -23,7 +23,7 @@ export const Home: React.VFC<Props> = ({ posts }) => {
         </div>
 
       }
-      aside={<Profile />}
+      // aside={<Profile />}
     />
   );
 };
