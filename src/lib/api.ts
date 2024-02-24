@@ -10,11 +10,11 @@ const postsDirectory = resolve(process.cwd(), '_posts');
 //export const getPostSlugs = () => ['circles','posts'].reduce((acc,dir)=>acc.concat(fs.readdirSync(resolve(postsDirectory,dir)).map(x=>dir+'/'+x)),new Array<string>())
 
 const category_list = ['circles','posts']
-export const getPostSlugs = (category:String) => category=='ALL'?
+export const getPostSlugs = (category:string) => category=='ALL'?
   category_list.reduce((acc,dir)=>acc.concat(fs.readdirSync(resolve(postsDirectory,dir)).map(x=>dir+'/'+x)),new Array<string>())
   :fs.readdirSync(postsDirectory+'/'+category).map(x=>category+'/'+x)
 
-export const getMaxPage = (category:String) => {
+export const getMaxPage = (category:string) => {
   const postNum = getPostSlugs(category).length;
   return Math.ceil(postNum / paginationOffset);
 };
@@ -50,7 +50,7 @@ export const getPostBySlug = (slug: string, fields: string[] = []) => {
 
 type Field = keyof PostType;
 
-export const getAllPosts = (fields: Field[] = [],category:String) => {
+export const getAllPosts = (fields: Field[] = [],category:string) => {
   const slugs = getPostSlugs(category);
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))

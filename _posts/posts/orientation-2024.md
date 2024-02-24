@@ -16,4 +16,4 @@ tags:
 ## 場所
 
 ## お問い合わせ
-お問い合わせは ouojousamaclub@gmail.com もしくは [Twitter](https://twitter.com/OU_ojousamaclub) にてお伺いいたしますわ。
+お問い合わせは [Twitter](https://twitter.com/handai_circle) にてお伺いいたしますわ。
