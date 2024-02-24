@@ -2,7 +2,7 @@
 title: 'マイナーサーオリ2024開催！'
 excerpt: ''
 coverImage: '/assets/default/cover.jpg'
-date: '2024-02-23'
+date: '2024-02-24'
 ogImage:
   url: '/assets/default/cover.jpg'
 tags:
