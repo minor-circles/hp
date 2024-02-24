@@ -23,7 +23,6 @@ const catToIcon: {[key: string]: React.ReactElement} = {
 
 export const Page: React.VFC<Props> = ({ posts, maxPage,category }) => {
   const page = Number(useRouter().query.page);
-
   return (
     <MainLayout
       main={

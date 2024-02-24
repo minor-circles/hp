@@ -3,6 +3,7 @@ export type PostType = {
   title: string;
   date: string;
   coverImage: string;
+  iconImage: string;
   excerpt: string;
   ogImage: {
     url: string;

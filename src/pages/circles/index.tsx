@@ -13,6 +13,7 @@ export const getStaticProps = async () => {
     'date',
     'slug',
     'coverImage',
+    'iconImage',
     'excerpt',
   ],'circles').slice(0, 4);
 

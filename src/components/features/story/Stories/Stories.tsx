@@ -22,6 +22,7 @@ export const Stories = ({ posts, icon, title }: Props) => {
               coverImage={post.coverImage}
               date={post.date}
               slug={post.slug}
+              iconImage={post.iconImage}
               excerpt={post.excerpt}
             />
           ))}
