@@ -19,9 +19,10 @@ export const getStaticProps = async ({ params }: Params) => {
     'date',
     'slug',
     'coverImage',
+    'iconImage',
     'excerpt',
     'tags',
-  ],'').filter((post) => post.tags?.includes(params.tag));
+  ],'ALL').filter((post) => post.tags?.includes(params.tag));
 
   return {
     props: { posts },
