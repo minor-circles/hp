@@ -28,7 +28,7 @@ export const Tags: React.VFC<Props> = ({ tags }) => {
           </div>
         </div>
       }
-      aside={<Profile />}
+      aside={<Profile isSide={true} />}
     />
   );
 };

@@ -45,7 +45,7 @@ export const List: React.VFC<Props> = ({ posts,category }) => {
             </Link>
           </div>
         }
-        aside={<Profile />}
+        aside={<Profile isSide={true}/>}
       />
     </>
   );

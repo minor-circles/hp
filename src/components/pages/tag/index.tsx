@@ -19,7 +19,7 @@ export const Tag: React.VFC<Props> = ({ posts }) => {
           <Stories posts={posts} title={tag} icon={<FaHashtag />} />
         </div>
       }
-      aside={<Profile />}
+      aside={<Profile isSide={true} />}
     />
   );
 };

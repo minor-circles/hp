@@ -31,7 +31,7 @@ export const Page: React.VFC<Props> = ({ posts, maxPage,category }) => {
           <Pagination count={maxPage} page={page} />
         </div>
       }
-      aside={<Profile />}
+      aside={<Profile isSide={true} />}
     />
   );
 };
