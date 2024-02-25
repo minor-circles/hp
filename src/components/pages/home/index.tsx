@@ -16,7 +16,12 @@ export const Home: React.VFC<Props> = ({ posts }) => {
           
           <div className="vstack gap-12 p-8 bg-primary-1">
             <h1 className="hstack gap-2 text-primary-1 text-3xl font-bold tracking-tighter leading-tight">マイナーサークルって何</h1>
-            <p className="text-sm text-primary-1 ">ここに説明</p>
+            <p className="text-sm text-primary-1 ">
+              一般に、全国的に珍しい活動を行っていたり慢性的に部員の少なかったりするサークルのことを指します。一風変わった個性豊かなサークルが集まっていることが特徴です。
+              また、Twitter上でのみ活動するサークルも多く、Twitterサークルと呼ばれる場合もあります。最も、マイナーサークルの明確な定義はなく、日々意味合いは変化し続けています。
+              <br />
+              さあ、あなたもマイナーサークルの世界を覗いてみませんか？
+            </p>
 
             <Link href='/circles/page/1/' passHref>
               <a className="button">
