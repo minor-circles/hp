@@ -3,7 +3,6 @@ import { resolve } from 'path';
 import matter from 'gray-matter';
 import { paginationOffset } from '@/config/pagination';
 import { PostType } from '@/types/post';
-
 const postsDirectory = resolve(process.cwd(), '_posts');
 
 //fs.readdirSync(postsDirectory,recursive =true)をやりたかった
@@ -54,6 +53,7 @@ export const getAllPosts = (fields: Field[] = [],category:string) => {
   const slugs = getPostSlugs(category);
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
-    .sort((post1, post2) => (post1.date! > post2.date! ? -1 : 1));
+    .sort((post1, post2) => (Math.random()<0.5 ? -1 : 1));
+    // .sort((post1, post2) => (post1.date! > post2.date! ? -1 : 1));
   return posts;
 };

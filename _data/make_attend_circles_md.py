@@ -7,7 +7,8 @@ def main():
         for i, row in enumerate(reader):
             circle2id[row[0]]=row[1]
 
-    circles=['大阪大学お嬢様部','再履バス同好会']
+    with open('answers/attend_2024.txt', 'r', encoding='utf-8_sig') as f:
+        circles = f.read().splitlines()
 
     md_body=f'''---
 title: 'マイサー合説 2024年度参加団体一覧'
@@ -23,10 +24,8 @@ tags:
 注  
 ※特筆がなければすべて大阪大学非公認団体です  
 ※★が付いている団体は合同説明会の運営です  
-{
-    '\n'.join([f'- [{circle}](/circles/{circle2id[circle]})' for circle in circles ])
-}
 '''
+    md_body+='\n'.join([f'- [{circle}](/circles/{circle2id[circle]})' for circle in circles ])
     
     with open('../_posts/posts/attend-circles-2024.md', 'w', encoding='utf-8') as f:
         f.write(md_body)

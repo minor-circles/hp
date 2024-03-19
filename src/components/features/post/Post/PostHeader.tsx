@@ -24,9 +24,7 @@ export const PostHeader = ({ title, coverImage, date, tags }: Props) => {
         {title}
       </h1>
       <div className="wrap gap-4">
-        {//サークル紹介のページは更新日時を表示しない
-          !tags.includes('サークル') && <Date date={date} />
-        }
+      <Date date={date} />
         <div className="wrap gap-2">
           <span className="select-none text-primary-1">
             <AiTwotoneTags />
