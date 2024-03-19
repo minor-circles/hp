@@ -26,11 +26,13 @@ export const Home: React.VFC<Props> = ({ posts }) => {
               さあ、あなたもマイナーサークルの世界を覗いてみませんか？
             </p>
 
+
             <Link href='/circles/page/1/' passHref>
               <a className="button">
               マイナーサークル一覧を見る
               </a>
             </Link>
+            <p>※過去の大阪大学マイナーサークル合同説明会に参加したマイナーサークルも掲載しています。最新の情報ではないものもありますので、各ページの更新日時をご確認ください。</p>
           </div>
         </div>
 
