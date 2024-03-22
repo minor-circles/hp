@@ -23,6 +23,7 @@ export const getStaticProps = async ({ params }: Params) => {
     'slug',
     'coverImage',
     'excerpt',
+    'tags',
   ],'posts').slice((page - 1) * paginationOffset, page * paginationOffset);
 
   return {

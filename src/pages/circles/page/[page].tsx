@@ -24,6 +24,7 @@ export const getStaticProps = async ({ params }: Params) => {
     'coverImage',
     'iconImage',
     'excerpt',
+    'tags',
   ],'circles').slice((page - 1) * paginationOffset, page * paginationOffset);
   return {
     props: { posts, maxPage: getMaxPage('circles') },

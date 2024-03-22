@@ -1,6 +1,14 @@
 # フォームの回答のexcelデータからマークダウンを生成
 import pandas as pd
 import csv
+import requests 
+import os
+import shutil
+
+def MakeDownloadURL(drive_url):
+    id=drive_url.split('=')[-1]
+    return f'https://drive.google.com/uc?id={id}&export=download'
+
 def main():
     circle2id={}
     with open('circle2id.csv', 'r', encoding='utf-8_sig') as f:
@@ -9,8 +17,9 @@ def main():
             circle2id[row[0]]=row[1]
     
     CIRCLES={}
-    for year in [2023,2024]: 
-      filename=f'answers/{year}.xlsx'
+    answer_paths=sorted([x for x in os.listdir('answers') if x.endswith('.xlsx')])
+    for j,filename_ in enumerate(answer_paths):
+      filename=f'answers/{filename_}'
       df = pd.read_excel(filename)
       for i,(_,line) in enumerate(df.iterrows()):
           timestamp=line['タイムスタンプ'] or ''
@@ -23,21 +32,51 @@ def main():
           contact=line['連絡先'] or ''
           contents_with_no_newline = contents.replace('\n','\n  ') if type(contents)==str else ''
           
+          icon_url=MakeDownloadURL(line['アイコン画像']) if 'アイコン画像' in line else ''
+          cover_url=MakeDownloadURL(line['活動の様子がわかる画像']) if '活動の様子がわかる画像' in line else ''
+
           CIRCLES[circle2id[circle_name]]={
               'timestamp':timestamp,'circle_name':circle_name,'member_count':member_count,'founding_date':founding_date,'place':place,'contents':contents,'message':message,'contact':contact,'contents_with_no_newline':contents_with_no_newline
-            }
+              ,'icon_url':icon_url,'cover_url':cover_url}
 
     for key,val in CIRCLES.items():
+        print(key,val['circle_name'])
+        year=val['timestamp'].year
+        month=val['timestamp'].month
+        day=val['timestamp'].day
+        # year=timestamp.split(' ')[0].split('/')[2]
+        # month=timestamp.split(' ')[0].split('/')[0]
+        # day=timestamp.split(' ')[0].split('/')[1]
+
+        os.makedirs(f'../public/assets/{key}', exist_ok=True)
+        icon_path=f'../public/assets/{key}/icon.png'
+        cover_path=f'../public/assets/{key}/cover.jpg'
+
+        if not os.path.exists(icon_path):
+          if val['icon_url']=='':
+              val['icon_url']=shutil.copy('../public/assets/default/icon.png',icon_path)
+          else:
+            r = requests.get(val['icon_url'], allow_redirects=True)
+            open(icon_path, 'wb').write(r.content)
+        
+        if not os.path.exists(cover_path):
+            if val['cover_url']=='':
+                val['cover_url']=shutil.copy('../public/assets/default/cover.jpg',cover_path)
+            else:
+              r = requests.get(val['cover_url'], allow_redirects=True)
+              open(cover_path, 'wb').write(r.content)
+
         md_body=f'''---
 title: '{val['circle_name']}'
 excerpt: ''
-date: '{year}-03-29'
-iconImage: '/assets/default/icon.png'
-coverImage: '/assets/default/cover.jpg'
+date: '{year}-{month}-{day}'
+iconImage: '/assets/{key}/icon.png'
+coverImage: '/assets/{key}/cover.jpg'
 ogImage:
-  url: '/assets/default/cover.jpg'
+  url: '/assets/{key}/icon.png'
 tags:
   - 'サークル'
+  {"- '活動中'" if year>=2024 else ''}
 ---
 
 ## サークル情報
@@ -59,7 +98,6 @@ tags:
 '''
         with open(f'../_posts/circles/{key}.md','w',encoding='utf-8_sig') as f:
            f.write(md_body)
-
     print('done')
         
 

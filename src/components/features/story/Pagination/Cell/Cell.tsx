@@ -7,9 +7,10 @@ type Props = {
   cell: CellType;
   page: number;
   count: number;
+  category: string;
 };
 
-export const Cell: React.VFC<Props> = ({ cell, page, count }) => {
+export const Cell: React.VFC<Props> = ({ cell, page, count,category }) => {
   switch (cell) {
     case '<':
       return (
@@ -25,7 +26,7 @@ export const Cell: React.VFC<Props> = ({ cell, page, count }) => {
       return (
         <ConditionalLink
           condition={page < count}
-          href={`/posts/page/${page + 1}`}
+          href={`/${category}/page/${page + 1}`}
         >
           <button type="button" aria-label="次に進む" disabled={page === count}>
             <StyledCell variant="arrow" disabled={page === count}>
@@ -38,7 +39,7 @@ export const Cell: React.VFC<Props> = ({ cell, page, count }) => {
       return <StyledCell variant="ellipsis">{cell}</StyledCell>;
     default:
       return (
-        <Link href={`/posts/page/${cell}`} passHref>
+        <Link href={`/${category}/page/${cell}`} passHref>
           <a>
             <StyledCell active={cell === page}>{cell}</StyledCell>
           </a>

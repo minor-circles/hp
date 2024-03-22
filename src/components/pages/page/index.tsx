@@ -28,7 +28,7 @@ export const Page: React.VFC<Props> = ({ posts, maxPage,category }) => {
       main={
         <div className="vstack gap-10 p-8 bg-primary-1">
           <Stories posts={posts} title={catToTitle[category]} icon={catToIcon[category]} />
-          <Pagination count={maxPage} page={page} />
+          <Pagination count={maxPage} page={page} category={category} />
         </div>
       }
       aside={<Profile isSide={true} />}

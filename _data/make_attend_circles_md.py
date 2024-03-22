@@ -7,7 +7,7 @@ def main():
         for i, row in enumerate(reader):
             circle2id[row[0]]=row[1]
 
-    with open('answers/attend_2024.txt', 'r', encoding='utf-8_sig') as f:
+    with open('others/attend_2024.txt', 'r', encoding='utf-8_sig') as f:
         circles = f.read().splitlines()
 
     md_body=f'''---
