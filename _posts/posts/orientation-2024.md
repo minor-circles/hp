@@ -1,7 +1,6 @@
 ---
 title: '2024年度マイナーサークル合同説明会開催決定！'
 excerpt: ''
-coverImage: '/assets/default/cover.jpg'
 date: '2024-03-19'
 ogImage:
   url: '/assets/default/cover.jpg'

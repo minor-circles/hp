@@ -13,18 +13,21 @@ type Props = {
 export const PostHeader = ({ title, coverImage, date, tags }: Props) => {
   return (
     <div className="vstack gap-4">
-      <div className="w-full h-64 sm:h-80">
-        <Image
-          src={coverImage}
-          alt={`Cover Image for ${title}`}
-          className="w-full h-full object-cover"
-        />
-      </div>
+      {
+        coverImage &&
+        <div className="w-full h-64 sm:h-80">
+          <Image
+            src={coverImage}
+            alt={`Cover Image for ${title}`}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      }
       <h1 className="text-primary-1 text-3xl md:text-4xl font-bold tracking-tighter leading-tight">
         {title}
       </h1>
       <div className="wrap gap-4">
-      <Date date={date} />
+        <Date date={date} />
         <div className="wrap gap-2">
           <span className="select-none text-primary-1">
             <AiTwotoneTags />

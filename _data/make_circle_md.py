@@ -61,7 +61,8 @@ def main():
         
         if not os.path.exists(cover_path):
             if val['cover_url']=='':
-                val['cover_url']=shutil.copy('../public/assets/default/cover.jpg',cover_path)
+                pass
+                # val['cover_url']=shutil.copy('../public/assets/default/cover.jpg',cover_path)
             else:
               r = requests.get(val['cover_url'], allow_redirects=True)
               open(cover_path, 'wb').write(r.content)
@@ -71,7 +72,7 @@ title: '{val['circle_name']}'
 excerpt: ''
 date: '{year}-{month}-{day}'
 iconImage: '/assets/{key}/icon.png'
-coverImage: '/assets/{key}/cover.jpg'
+{f"coverImage: '/assets/{key}/cover.jpg'" if val['cover_url'] else ""}
 ogImage:
   url: '/assets/{key}/icon.png'
 tags:
