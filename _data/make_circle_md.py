@@ -22,6 +22,9 @@ def main():
       filename=f'answers/{filename_}'
       df = pd.read_excel(filename)
       for i,(_,line) in enumerate(df.iterrows()):
+          if 'CHECK' in line:
+             if line['CHECK']==False:
+              continue
           timestamp=line['タイムスタンプ'] or ''
           circle_name=line['サークル名'] or ''
           member_count=line['部員数'] or ''
@@ -31,16 +34,14 @@ def main():
           message=line['メッセージ'] or ''
           contact=line['連絡先'] or ''
           contents_with_no_newline = contents.replace('\n','\n  ') if type(contents)==str else ''
-          
-          icon_url=MakeDownloadURL(line['アイコン画像']) if 'アイコン画像' in line else ''
-          cover_url=MakeDownloadURL(line['活動の様子がわかる画像']) if '活動の様子がわかる画像' in line else ''
+          icon_url=MakeDownloadURL(line['アイコン画像']) if 'アイコン画像' in line and type(line['アイコン画像'])!=float else ''
+          cover_url=MakeDownloadURL(line['活動の様子がわかる画像']) if '活動の様子がわかる画像' in line and type(line['活動の様子がわかる画像'])!=float else ''
 
           CIRCLES[circle2id[circle_name]]={
               'timestamp':timestamp,'circle_name':circle_name,'member_count':member_count,'founding_date':founding_date,'place':place,'contents':contents,'message':message,'contact':contact,'contents_with_no_newline':contents_with_no_newline
               ,'icon_url':icon_url,'cover_url':cover_url}
-
     for key,val in CIRCLES.items():
-        print(key,val['circle_name'])
+        print(key,val['circle_name'],val['timestamp'])
         year=val['timestamp'].year
         month=val['timestamp'].month
         day=val['timestamp'].day
@@ -51,10 +52,11 @@ def main():
         os.makedirs(f'../public/assets/{key}', exist_ok=True)
         icon_path=f'../public/assets/{key}/icon.png'
         cover_path=f'../public/assets/{key}/cover.jpg'
-
+        
         if not os.path.exists(icon_path):
           if val['icon_url']=='':
-              val['icon_url']=shutil.copy('../public/assets/default/icon.png',icon_path)
+              # val['icon_url']=shutil.copy('../public/assets/default/icon.png',icon_path)
+              pass
           else:
             r = requests.get(val['icon_url'], allow_redirects=True)
             open(icon_path, 'wb').write(r.content)
@@ -71,7 +73,7 @@ def main():
 title: '{val['circle_name']}'
 excerpt: ''
 date: '{year}-{month}-{day}'
-iconImage: '/assets/{key}/icon.png'
+{f"iconImage: '/assets/{key}/icon.png'" if val['icon_url'] else ""}
 {f"coverImage: '/assets/{key}/cover.jpg'" if val['cover_url'] else ""}
 ogImage:
   url: '/assets/{key}/icon.png'
