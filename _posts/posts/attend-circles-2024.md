@@ -1,6 +1,7 @@
 ---
 title: 'マイサー合説 2024年度参加団体一覧'
 excerpt: ''
+coverImage: '/assets/thumbnail.png'
 date: '2020-03-29'
 ogImage:
   url: '/assets/thumbnail.png'
