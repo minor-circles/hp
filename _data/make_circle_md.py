@@ -10,6 +10,9 @@ def MakeDownloadURL(drive_url):
     return f'https://drive.google.com/uc?id={id}&export=download'
 
 def main():
+    with open('cached_image.txt', 'r', encoding='utf-8_sig') as f:
+        cached_image = f.read().splitlines()
+
     circle2id={}
     with open('circle2id.csv', 'r', encoding='utf-8_sig') as f:
         reader = csv.reader(f)
@@ -53,21 +56,33 @@ def main():
         icon_path=f'../public/assets/{key}/icon.png'
         cover_path=f'../public/assets/{key}/cover.jpg'
         
-        if not os.path.exists(icon_path):
-          if val['icon_url']=='':
-              # val['icon_url']=shutil.copy('../public/assets/default/icon.png',icon_path)
-              pass
-          else:
-            r = requests.get(val['icon_url'], allow_redirects=True)
-            open(icon_path, 'wb').write(r.content)
-        
-        if not os.path.exists(cover_path):
-            if val['cover_url']=='':
-                pass
-                # val['cover_url']=shutil.copy('../public/assets/default/cover.jpg',cover_path)
-            else:
-              r = requests.get(val['cover_url'], allow_redirects=True)
-              open(cover_path, 'wb').write(r.content)
+        # if val['icon_url']:
+        #   print(val['icon_url'])
+        #   print(val['icon_url'] in cached_image)
+        #   for a in cached_image:
+        #      if val['icon_url']==a:
+        #         print('cached')
+        #         break
+        #   return
+        if val['icon_url'] in cached_image or val['icon_url']=='':
+          # print('using cached image')
+          pass
+        else:
+          # print('new request')
+          r = requests.get(val['icon_url'], allow_redirects=True)
+          open(icon_path, 'wb').write(r.content)
+          with open('cached_image.txt', 'a', encoding='utf-8_sig') as f:
+              f.write(val['icon_url']+'\n')
+
+        if val['cover_url'] in cached_image or val['cover_url']=='':
+            pass
+            # print('using cached image')
+        else:
+          # print('new request')
+          r = requests.get(val['cover_url'], allow_redirects=True)
+          open(cover_path, 'wb').write(r.content)
+          with open('cached_image.txt', 'a', encoding='utf-8_sig') as f:
+              f.write(val['cover_url']+'\n')
 
         md_body=f'''---
 title: '{val['circle_name']}'
