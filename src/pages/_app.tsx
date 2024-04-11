@@ -21,7 +21,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <ContentLayout className="px-0 py-6 sm:p-6 z-0">
           <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
             {new Array(300).fill(0).map((_, i) =>
-              <div>
+              <div key={i}>
                 <svg width="100" height="100" style={{
                   position: 'absolute',
                   top: Math.random() * 150 - 50 + '%',
