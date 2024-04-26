@@ -24,7 +24,7 @@ tags:
 ※特筆がなければすべて大阪大学非公認団体です  
 ※★が付いている団体は合同説明会の運営です  
 '''
-    md_body+='\n'.join([f'- [{circle}](hp/circles/{circle2id[circle]})' for circle in circles ])
+    md_body+='\n'.join([f'- [{circle}](/hp/circles/{circle2id[circle]})' for circle in circles ])
     
     with open('../_posts/posts/attend-circles-2024.md', 'w', encoding='utf-8') as f:
         f.write(md_body)
