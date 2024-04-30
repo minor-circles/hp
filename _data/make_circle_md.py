@@ -20,7 +20,7 @@ def main():
             circle2id[row[0]]=row[1]
     
     CIRCLES={}
-    answer_paths=sorted([x for x in os.listdir('answers') if x.endswith('.xlsx')])
+    answer_paths=['2024.xlsx'] #sorted([x for x in os.listdir('answers') if x.endswith('.xlsx')])
     for j,filename_ in enumerate(answer_paths):
       filename=f'answers/{filename_}'
       df = pd.read_excel(filename)
