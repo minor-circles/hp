@@ -14,7 +14,7 @@ type Props = {
 export const Story = ({ title, coverImage, iconImage, date, excerpt, slug }: Props) => {
   return (
     <Link href={`/${slug}`} className='hover:bg-indigo-500'>
-      <a className="select-none overflow-hidden w-full h-full vstack md:flex-row cursor-pointer focus:outline-2 ">
+      <a className="select-none overflow-visible w-full h-full vstack md:flex-row cursor-pointer focus:outline-2 ">
         {
           iconImage &&
           (
