@@ -16,7 +16,8 @@ export const getStaticProps = async () => {
     'iconImage',
     'excerpt',
     'tags',
-  ],'circles').slice(0, 4);
+    'content',
+  ], 'circles').slice(0, 4);
 
   return {
     props: { posts },

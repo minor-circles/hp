@@ -56,7 +56,7 @@ export const getAllPosts = (fields: Field[] = [],category:string) => {
     .sort((post1, post2) => {
       if(post1.tags?.includes('活動中') && !post2.tags?.includes('活動中')) return -1;
       if(!post1.tags?.includes('活動中') && post2.tags?.includes('活動中')) return 1;
-      return Math.random()<0.5 ? -1 : 1});
+      return post1.content.length>post2.content.length ? -1 : 1});
       
     // .sort((post1, post2) => (post1.date! > post2.date! ? -1 : 1));
   return posts;

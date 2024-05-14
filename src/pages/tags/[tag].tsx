@@ -22,7 +22,8 @@ export const getStaticProps = async ({ params }: Params) => {
     'iconImage',
     'excerpt',
     'tags',
-  ],'ALL').filter((post) => post.tags?.includes(params.tag));
+    'content',
+  ], 'ALL').filter((post) => post.tags?.includes(params.tag));
 
   return {
     props: { posts },
@@ -30,7 +31,7 @@ export const getStaticProps = async ({ params }: Params) => {
 };
 
 export async function getStaticPaths() {
-  const tags = getAllPosts(['tags'],'ALL').flatMap((post) => post.tags);
+  const tags = getAllPosts(['tags', 'content'], 'ALL').flatMap((post) => post.tags);
 
   return {
     paths: tags.map((tag) => {

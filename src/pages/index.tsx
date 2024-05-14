@@ -1,5 +1,5 @@
 import { Home } from '@/components/pages/home';
-import { getPostBySlug,getAllPosts } from '@/lib/api';
+import { getPostBySlug } from '@/lib/api';
 import markdownToHtml from '@/lib/markdownToHtml';
 
 type Props = React.ComponentPropsWithoutRef<typeof Home>;
@@ -10,10 +10,10 @@ export default View;
 
 export const getStaticProps = async () => {
 
-  const topPosts=['posts/orientation-2024']
+  const topPosts = ['posts/orientation-2024']
 
-  
-  const posts=topPosts.map(async(slug)=>{
+
+  const posts = topPosts.map(async (slug) => {
     const post = getPostBySlug(slug, [
       'title',
       'date',
@@ -26,11 +26,11 @@ export const getStaticProps = async () => {
     const content = await markdownToHtml(post.content || '');
 
     return {
-          ...post,
-          content,
-        }
+      ...post,
+      content,
+    }
   })
-  return Promise.all(posts).then((posts)=>{
+  return Promise.all(posts).then((posts) => {
     return {
       props: {
         posts,

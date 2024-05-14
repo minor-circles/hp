@@ -4,7 +4,7 @@ import { getAllPosts, getMaxPage } from '@/lib/api';
 
 type Props = React.ComponentPropsWithoutRef<typeof Page>;
 
-const View: React.VFC<Props> = (props: Props) => <Page {...props} category='circles'/>;
+const View: React.VFC<Props> = (props: Props) => <Page {...props} category='circles' />;
 
 export default View;
 
@@ -25,7 +25,8 @@ export const getStaticProps = async ({ params }: Params) => {
     'iconImage',
     'excerpt',
     'tags',
-  ],'circles').slice((page - 1) * paginationOffset, page * paginationOffset);
+    'content',
+  ], 'circles').slice((page - 1) * paginationOffset, page * paginationOffset);
   return {
     props: { posts, maxPage: getMaxPage('circles') },
   };
