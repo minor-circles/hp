@@ -14,6 +14,8 @@ tags:
 
 日時：2024年5月15日(水)・16日(木)  
 場所：大阪大学豊中キャンパスDAICEL Studio（サイエンス・スタジオA）  
+![地図](/assets/orientation-2024/map.png)
+
 参加サークル：[参加サークル一覧](/hp/posts/attend-circles-2024)　　  
 
 ## 大阪大学マイナーサークル合同説明会とは
