@@ -10,11 +10,11 @@ type Props = {
   category: string;
 };
 
-export const Cell: React.VFC<Props> = ({ cell, page, count,category }) => {
+export const Cell: React.VFC<Props> = ({ cell, page, count, category }) => {
   switch (cell) {
     case '<':
       return (
-        <ConditionalLink condition={page > 1} href={`/posts/page/${page - 1}`}>
+        <ConditionalLink condition={page > 1} href={`/${category}/page/${page - 1}`}>
           <button type="button" aria-label="前に戻る" disabled={page === 1}>
             <StyledCell variant="arrow" disabled={page === 1}>
               {cell}
