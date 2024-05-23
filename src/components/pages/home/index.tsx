@@ -12,7 +12,7 @@ export const Home: React.VFC<Props> = ({ posts }) => {
     <MainLayout
       main={
         <div>
-          {posts.map((post) => <TopPost post={post} key={post.title} />)}
+          {/* {posts.map((post) => <TopPost post={post} key={post.title} />)} */}
 
           <div className="vstack gap-12 p-8 bg-primary-1">
             <h1 className="hstack gap-2 text-primary-1 text-3xl font-bold tracking-tighter leading-tight">マイナーサークルって何</h1>
