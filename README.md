@@ -2,6 +2,8 @@
 [https://minor-circles.github.io/hp/](https://minor-circles.github.io/hp/)  
 開発者募集中
 
+# 記事の作成方法
+[https://hackmd.io/vy3wc-7YTcWrtoDakSQwkg](https://hackmd.io/vy3wc-7YTcWrtoDakSQwkg)
 
 # 実行方法
 ```
@@ -17,4 +19,3 @@ npm run dev
 
 # クローン元
 [https://github.com/sub-t/blog-template](https://github.com/sub-t/blog-template)
-
