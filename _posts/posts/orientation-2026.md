@@ -17,7 +17,7 @@ tags:
 ![地図](/hp/assets/orientation-2024/map.png)
 
 ## 参加サークル一覧
-いずれの団体も両日とも参加いたします。
+
 - [大阪大学お嬢様部](/hp/circles/015)
 - [大阪大学道路研究会](/hp/circles/013)
 - [阪大地理研](https://x.com/OUgeographer)
